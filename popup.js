@@ -83,7 +83,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         });
       } else {
         productInfoDiv.innerHTML = "";
-        productDiv.innerHTML = "<p>Product information not found.</p>";
+        productDiv.innerHTML = "<p>Please refersh the page to load the plugin properly. Product information not found.</p>";
       }
     }
   );
