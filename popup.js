@@ -10,8 +10,8 @@ function displaySimilarProducts(similarProducts) {
   similarProducts.forEach((product, index) => {
     similarProductsHTML += `
         <li style="margin-bottom: 10px;">
-        <a href="${product.product_link}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #3498db;">
-        <p>${product.title}</p>
+        <a href="${product.product_link}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #2a2a2a;">
+        <p style="color: #3498db;">${product.title}</p>
             <img src="${product.thumbnail}" style="max-width: 50px; vertical-align: middle; margin-right: 10px; border-radius: 5px;" />
             ${product.price}
           </a>
