@@ -21,7 +21,7 @@ const productInfoDiv = document.getElementById("product-info");
   function displaySimilarProducts(similarProducts) {
     let similarProductsHTML = '<h3 style="font-family: \'Helvetica\', Arial, sans-serif;">Similar Products:</h3><ul style="list-style: none; padding: 0;">';
   
-    similarProducts.forEach(product => {
+    similarProducts.forEach((product, index) => {
       similarProductsHTML += `
         <li style="margin-bottom: 10px;">
         <a href="${product.product_link}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #3498db;">
@@ -31,6 +31,9 @@ const productInfoDiv = document.getElementById("product-info");
           </a>
           <br/>
         </li>`;
+        if (index < similarProducts.length - 1) {
+            similarProductsHTML += '<hr style="border: none; border-top: 1px solid #eee; margin: 10px 0;" />';
+          }
     });
   
     similarProductsHTML += '</ul>';
