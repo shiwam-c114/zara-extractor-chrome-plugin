@@ -24,11 +24,12 @@ const productInfoDiv = document.getElementById("product-info");
     similarProducts.forEach(product => {
       similarProductsHTML += `
         <li style="margin-bottom: 10px;">
+        <a href="${product.product_link}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #3498db;">
         <p>${product.title}</p>
-          <a href="${product.product_link}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #3498db;">
             <img src="${product.thumbnail}" style="max-width: 50px; vertical-align: middle; margin-right: 10px; border-radius: 5px;" />
             ${product.price}
           </a>
+          <br/>
         </li>`;
     });
   
@@ -38,13 +39,16 @@ const productInfoDiv = document.getElementById("product-info");
   
   // Function to handle the button click to fetch similar products
   function handleShowSimilarProducts(productName) {
+    productInfoDiv.innerHTML = "fetching similar products ...";
     chrome.runtime.sendMessage({ action: "getSimilarProducts", productName }, (response) => {
       if (response.similarProducts) {
+        productInfoDiv.innerHTML = "";
         // bkg.console.log(response.similarProducts, "-res");
         
         // Handle the display of similar products here
         productDiv.innerHTML += displaySimilarProducts(response.similarProducts);
       } else if (response.error) {
+        productInfoDiv.innerHTML = "";
         console.error(response.error);
       }
     });
