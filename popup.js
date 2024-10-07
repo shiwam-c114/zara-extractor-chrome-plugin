@@ -1,7 +1,7 @@
 // Send a message to the content script to extract product info
 const productDiv = document.getElementById("product");
 const productInfoDiv = document.getElementById("product-info");
-const bkg = chrome.extension.getBackgroundPage();
+// const bkg = chrome.extension.getBackgroundPage();
 
 // async function getSimilarProducts(productName) {
 //     const apiKey = "your-ebay-api-key"; // Replace with a real eBay API key
@@ -25,9 +25,9 @@ const bkg = chrome.extension.getBackgroundPage();
       similarProductsHTML += `
         <li style="margin-bottom: 10px;">
         <p>${product.title}</p>
-          <a href="${product.viewItemURL[0]}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #3498db;">
+          <a href="${product.product_link}" target="_blank" style="font-family: 'Helvetica', Arial, sans-serif; text-decoration: none; color: #3498db;">
             <img src="${product.thumbnail}" style="max-width: 50px; vertical-align: middle; margin-right: 10px; border-radius: 5px;" />
-            ${product.title[0]}
+            ${product.price}
           </a>
         </li>`;
     });
@@ -40,7 +40,7 @@ const bkg = chrome.extension.getBackgroundPage();
   function handleShowSimilarProducts(productName) {
     chrome.runtime.sendMessage({ action: "getSimilarProducts", productName }, (response) => {
       if (response.similarProducts) {
-        bkg.console.log(response.similarProducts, "-res");
+        // bkg.console.log(response.similarProducts, "-res");
         
         // Handle the display of similar products here
         productDiv.innerHTML += displaySimilarProducts(response.similarProducts);
