@@ -1,8 +1,5 @@
-
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "getSimilarProducts") {
-
     const myHeaders = new Headers();
     myHeaders.append("X-Requested-With", "XMLHttpRequest");
 
@@ -15,15 +12,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const apiUrl = `${proxyUrl}https://serpapi.com/search.json?engine=google_shopping&q=${encodeURIComponent(
       request.productName
     )}&api_key=ae7b03c53c36314c09c2a9342c4d41ad003f2716b8205934510b5a96d9836e16`;
-
-    //   const apiUrl = `https://serpapi.com/search.json?engine=google_shopping&q=${encodeURIComponent(request.productName)}&api_key=ae7b03c53c36314c09c2a9342c4d41ad003f2716b8205934510b5a96d9836e16`;
+    // api key has only 100 request per month limit
 
     fetch(apiUrl, requestOptions)
-      .then((response) => {
-        console.log(response, "---res")
-        // bkg.console.log(response, "---res")
-       return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         sendResponse({ similarProducts: data?.shopping_results });
       })

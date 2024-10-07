@@ -1,25 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "Luma chrome plugin",
-    "version": "1.0",
-    "description": "Extract product details from fashion e-commerce websites.",
-    "permissions": [
-      "activeTab",
-      "scripting",
-      "storage",
-      "background"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://*.zara.com/*"],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+  "manifest_version": 3,
+  "name": "Luma chrome plugin",
+  "version": "1.0",
+  "description": "Extract product details from fashion e-commerce websites.",
+  "permissions": ["activeTab", "scripting", "storage", "background"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.zara.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
