@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Luma chrome plugin",
+  "name": "Lumusaas Zara Product Info Extractor",
   "version": "1.0",
   "description": "Extract product details from fashion e-commerce websites.",
   "permissions": ["activeTab", "scripting", "storage", "background"],
